@@ -1,0 +1,54 @@
+MRE Consulting & Insurance — Website
+ Development & Design Brief
+ 1. Project Objective
+ Create a conversion-first, AI-enabled, and visually engaging website that highlights MRE Consulting &
+ Insurance’s multi-service offerings while driving lead generation, calls, quotes, and bookings through a
+ seamless, modern interface. The website will prominently feature an on-site AI Agent capable of
+ answering questions, assisting visitors, and guiding them to take action. It must integrate all Google
+ Business, Yelp, and social media review feeds, allowing visitors to view live reviews and access
+ company social profiles directly from the site.
+ 2. Core Website Architecture
+ The site should feature clear top navigation linking to: Home, About (Company, Partners), Services,
+ Testimonials & Reviews, Advice & Tips, and Book Now. It should have a sticky navigation bar, smooth
+ scrolling transitions, and mobile responsiveness.
+ 3. Homepage (Landing Page)
+ The homepage serves as the main entry point and must emphasize conversion-focused CTAs with
+ visual animations. Sections include:
+ 1 Hero Section with animated tagline, background video, and dual CTAs: 'Request a Quote' and
+ 'Book Now'.
+ 2 About Snapshot with mission statement and credibility metrics.
+ 3 Reasons to Choose Us with icon-based animations.
+ 4 Services Overview slider linking to detailed service pages.
+ 5 Testimonials Carousel pulling live reviews from Google and Yelp.
+ 6 Integrated AI Agent to engage users and answer questions.
+ 7 Mailing List Signup integrated with CRM.
+ 8 Footer with contact details and social media icons linking to official company accounts.
+ 4. About Page
+ Includes 'About Our Company' (mission, vision, identity) and 'About Our Partners' (profiles and strategic
+ alliances). Each section will feature scrolling animations and light hover effects to enhance
+ engagement.
+ 5. Services Page
+Detail all offerings including Business Consulting, Digital Marketing, Insurance Consulting, Tax &
+ Accounting, AI & Technology Consulting, Automation Implementation, and Web Capabilities. Each
+ service card should include a 'Request a Quote' and 'Book Now' CTA.
+ 6. Testimonials & Reviews
+ Central hub displaying live Google Business and Yelp reviews with schema markup for SEO. Include
+ an option for users to leave new reviews and view social proof across platforms.
+ 7. Advice & Tips (Blog)
+ A blog-style resource page for ongoing education, SEO, and audience engagement. Articles should
+ feature multimedia integration, categories, and newsletter sign-ups.
+ 8. Book Now Page
+ Integrated Calendly widget for real-time scheduling. The page should also feature a pop-up from the AI
+ agent offering assistance and guidance with booking.
+ 9. Integrations & Functionality
+ 1 AI Agent: Site-wide, available on all pages for Q&A;, lead capture, and navigation support.
+ 2 Google Business & Yelp: Embedded feeds for verified reviews and submission links.
+ 3 Social Media Integration: Links and live content previews for Facebook, LinkedIn, Instagram,
+ YouTube, and X (Twitter).
+ 4 Calendly Scheduling: Embedded widget with automated confirmation workflow.
+ 5 CRM Integration: Lead forms connected to HubSpot or Google Sheets.
+ 6 GA4 & Tag Manager: Event tracking for quotes, bookings, AI interactions, and signups.
+ 10. Design & UI Guidelines
+ The design should be clean, modern, and interactive, featuring professional animations, subtle motion
+ effects, and high accessibility standards. Primary color palette: blue, white, and metallic accents.
+ Typography: Poppins or Inter. Animations should be smooth and non-distracting.

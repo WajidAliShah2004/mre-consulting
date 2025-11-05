@@ -1,0 +1,43 @@
+# robots.txt for MRECAI Website
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# AI Crawlers - Allowed for maximum visibility
+# This includes: GPTBot (OpenAI), Google-Extended (Bard/Gemini), 
+# ClaudeBot (Anthropic), CCBot (Common Crawl), and others
+# Decision: Allow AI indexing to enable AI assistants to reference our content
+
+# Sitemap location
+Sitemap: https://mrecai.com/sitemap.xml
+
+# Crawl-delay (helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow private areas (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow important resources for proper rendering
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Block bad bots (scrapers, not search engines)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

@@ -1,0 +1,128 @@
+10-20 Planning: Consulting Website
+ Structure and Conversion Strategy
+ Website Structure and Content Plan
+ Homepage (Landing Page)
+ Primary conversions: Request a Quote, Call Me Now, Subscribe to Mailing List
+ On-site AI assistant available
+ Top-level sections:
+ About the Company: mission, who we are, what we do; empowerment
+ focus for individuals, families, and businesses
+ Reasons to Choose Us
+ Services Overview, including technology services
+ Testimonials and Reviews
+ Integrations: Google Business, Yelp, and other review platforms
+ Scheduling: ability to schedule a call or meeting (Calendly integration)
+ About Section
+ About Our Company: mission, identity, scope, and activities
+ About Our People/Partners: strategic partners, partner profiles, and their service
+ offerings
+ Services Page
+ Business Consulting
+ Digital Marketing Consulting
+ Insurance Services and Consulting
+ Tax Services
+ Accounting Services
+ AI and Technology Consulting
+ Automation Implementation
+ Web Capabilities (“and much more with our web skills”)
+ Testimonials and Reviews Page
+ Centralized testimonials hub
+ Live review connections: Google Business Reviews, Yelp
+ Mechanism to leave new reviews on Google and Yelp
+ Advice & Tips Page
+ Educational content: advice, tips
+Blog articles and images
+ Book Now Page
+ Direct scheduling via Calendly: automatic connection to book meetings
+ Functional Requirements and Integrations
+ Lead Capture and Conversion
+ Quote request form with essential fields
+ “Call Me Now” CTA with click-to-call and/or immediate callback feature
+ Mailing list signup form connected to email marketing tool
+ AI Assistant
+ On-site AI assistant for FAQs, service guidance, and lead intake
+ Review and Reputation Management
+ Google Business and Yelp integrations for display and submission
+ Links or embedded widgets for posting new reviews
+ Scheduling
+ Calendly embedded on the Book Now page
+ Calendar availability syncing and confirmation workflow
+ Navigation and UX
+ Clear top navigation linking: Home, About (Company, Partners), Services,
+ Testimonials & Reviews, Advice & Tips, Book Now
+ Prominent CTAs across pages (Request a Quote, Schedule, Subscribe)
+ Content Architecture
+ Company mission and empowerment narrative
+ Partner bios and service listings
+ Detailed service descriptions for each consulting area
+ Ongoing blog publishing workflow with images
+ Testimonials repository and ratings display
+ Data, Facts, and Examples to Include
+ Empowers individuals, families, and businesses
+ Strategic partners: list of names, specialties, and service details
+ Service categories: business, digital marketing, insurance, tax, accounting, AI/tech,
+ automation, web skills
+ Review ecosystems: Google Business, Yelp, other business connections
+ Scheduling: Calendly as the booking system
+Content Elements and Messaging
+ Value propositions: reasons to choose the company, outcomes delivered
+ Trust signals: testimonials, third-party reviews, partner credibility
+ Accessible contact options: immediate call, quote request, and scheduling
+ Educational positioning: Advice & Tips blog to provide ongoing value
+ Backend and Implementation Considerations
+ Forms
+ Quote request: validation, CRM/email integration
+ Mailing list: double opt-in compliance
+ AI Assistant Configuration
+ Knowledge base from About, Services, FAQs, and blog
+ Handoff to a human via scheduling or call option
+ Review Widgets/API
+ Display recent Google and Yelp reviews
+ Direct links for new review submissions
+ Calendly Integration
+ Embedded widget on Book Now
+ Confirmation emails and reminders
+ SEO and Content
+ Structured metadata for each page
+ Blog categories and tags for Advice & Tips
+ Local SEO: Google Business profile alignment
+ User Journeys
+ Immediate Contact and Conversion
+ Homepage CTA → Request a Quote form submission → CRM capture →
+ follow-up
+ “Call Me Now” → click-to-call or callback request → immediate engagement
+ Book Now → Calendly → scheduled meeting confirmation
+ Research and Trust-Building
+ Read About (Company and Partners) → Services details → Testimonials &
+ Reviews → Book Now
+ Ongoing Engagement
+ Subscribe to mailing list → receive tips/advice → return to site for services
+To-Dos and Page-Specific Requirements
+ Homepage: finalize CTAs, add AI assistant, connect to Google/Yelp, embed
+ scheduling
+ About: write company mission/identity; compile partner bios and service summaries
+ Services: create detailed descriptions for each consulting category
+ Testimonials & Reviews: aggregate testimonials; implement live review feeds and
+ submission links
+ Advice & Tips: set up blog framework; publish initial articles with images
+ Book Now: integrate Calendly; ensure availability sync and user confirmations
+ Next Arrangements
+ [ ] Configure and embed the on-site AI assistant on the homepage with a services/FAQ
+ knowledge base
+ [ ] Build the Request a Quote form and integrate with CRM and email notifications
+ [ ] Implement the “Call Me Now” CTA with click-to-call and/or callback mechanism
+ [ ] Set up mailing list signup with double opt-in; connect to the email marketing platform
+ [ ] Write and publish About Our Company content (mission, who we are, what we do)
+ [ ] Compile About Our People/Partners profiles with services offered
+ [ ] Draft and publish detailed Services pages for each consulting category
+ [ ] Integrate Google Business and Yelp review widgets; add links for posting new
+ reviews
+ [ ] Aggregate existing testimonials and display them on the Testimonials & Reviews
+ page
+ [ ] Build the Advice & Tips blog structure; publish initial articles and images
+ [ ] Embed Calendly on the Book Now page; configure availability, confirmations, and
+ reminders
+ [ ] Configure site navigation to include Home, About (Company, Partners), Services,
+ Testimonials & Reviews, Advice & Tips, Book Now
+ [ ] Implement SEO basics: titles, meta descriptions, and structured data for pages
+ [ ] Test all CTAs and forms end-to-end; verify mobile responsiveness and accessibility

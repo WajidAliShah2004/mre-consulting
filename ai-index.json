@@ -1,0 +1,479 @@
+{
+    "website": {
+        "name": "MRE Consulting & Insurance",
+        "shortName": "MRECAI",
+        "founded": 2009,
+        "yearsExperience": "15+",
+        "tagline": "Empowering Your Business Success",
+        "description": "Expert business consulting, insurance, and AI technology solutions",
+        "url": "TBD",
+        "status": "Development - 70% Complete"
+    },
+    "contact": {
+        "phone": "929-919-3574",
+        "email": "Matthew@MRECAI.com",
+        "availability": "24/7",
+        "calendly": "Pending Integration",
+        "socialMedia": {
+            "facebook": "https://facebook.com/mreconsulting",
+            "linkedin": "https://linkedin.com/company/mreconsulting",
+            "instagram": "https://instagram.com/mreconsulting",
+            "youtube": "https://youtube.com/@mreconsulting",
+            "twitter": "https://twitter.com/mreconsulting"
+        }
+    },
+    "statistics": {
+        "clientsServed": "500+",
+        "rating": "4.9/5",
+        "successRate": "98%",
+        "yearsExperience": "15+"
+    },
+    "technology": {
+        "frontend": {
+            "framework": "React 18",
+            "language": "TypeScript",
+            "buildTool": "Vite",
+            "styling": "Tailwind CSS",
+            "animations": [
+                "Framer Motion",
+                "AOS"
+            ],
+            "routing": "React Router v6"
+        },
+        "backend": {
+            "runtime": "Node.js",
+            "framework": "Express",
+            "language": "TypeScript",
+            "database": "Supabase (PostgreSQL)",
+            "orm": "Supabase JS Client"
+        }
+    },
+    "pages": [
+        {
+            "name": "Home",
+            "path": "/",
+            "purpose": "Landing page with hero, services overview, testimonials",
+            "ctas": [
+                "Book Free Consultation",
+                "Explore Services",
+                "Call Now",
+                "Get Quote"
+            ]
+        },
+        {
+            "name": "About",
+            "path": "/about",
+            "purpose": "Company overview, mission, timeline, team",
+            "subPages": [
+                "/about/founder",
+                "/about/partners"
+            ]
+        },
+        {
+            "name": "About Founder",
+            "path": "/about/founder",
+            "purpose": "Matthew Epstein biography and background"
+        },
+        {
+            "name": "About Partners",
+            "path": "/about/partners",
+            "purpose": "Strategic partnerships (GIA, NovaEdge Solutions)"
+        },
+        {
+            "name": "Services",
+            "path": "/services",
+            "purpose": "Comprehensive service listings with details"
+        },
+        {
+            "name": "Intake Forms",
+            "path": "/intake-forms",
+            "purpose": "7 Google Forms for quotes and client intake"
+        },
+        {
+            "name": "Testimonials",
+            "path": "/testimonials",
+            "purpose": "Client reviews and success stories"
+        },
+        {
+            "name": "Blog",
+            "path": "/blog",
+            "purpose": "Articles and insights"
+        },
+        {
+            "name": "Contact",
+            "path": "/contact",
+            "purpose": "Contact form, information, social media"
+        },
+        {
+            "name": "Book Now",
+            "path": "/book-now",
+            "purpose": "Schedule consultations via Calendly"
+        }
+    ],
+    "services": [
+        {
+            "id": "business-consulting",
+            "name": "Business Consulting",
+            "description": "Strategic guidance to help your business grow",
+            "features": [
+                "Strategic planning and execution",
+                "Financial analysis and forecasting",
+                "Operational efficiency optimization",
+                "Growth strategy development"
+            ],
+            "icon": "FaBriefcase"
+        },
+        {
+            "id": "digital-marketing",
+            "name": "Digital Marketing",
+            "description": "Comprehensive digital marketing solutions",
+            "features": [
+                "SEO and content marketing",
+                "Social media management",
+                "PPC advertising campaigns",
+                "Analytics and reporting"
+            ],
+            "icon": "FaMobileAlt"
+        },
+        {
+            "id": "insurance-services",
+            "name": "Insurance Services",
+            "description": "Expert insurance consulting",
+            "features": [
+                "Comprehensive coverage analysis",
+                "Multiple carrier options",
+                "Claims support and advocacy",
+                "Policy review and optimization"
+            ],
+            "insuranceTypes": [
+                "Homeowners Insurance",
+                "Auto Insurance (Personal & Commercial)",
+                "Commercial/Business Insurance",
+                "Professional Liability (E&O)",
+                "Umbrella Insurance",
+                "Condo Insurance"
+            ],
+            "icon": "FaShieldAlt"
+        },
+        {
+            "id": "tax-accounting",
+            "name": "Tax & Accounting",
+            "description": "Professional tax planning and accounting",
+            "features": [
+                "Tax planning and preparation",
+                "Bookkeeping and payroll",
+                "Financial statement preparation",
+                "IRS representation"
+            ],
+            "icon": "FaChartBar"
+        },
+        {
+            "id": "ai-technology",
+            "name": "AI & Technology",
+            "description": "Cutting-edge AI and technology solutions",
+            "features": [
+                "AI implementation consulting",
+                "Process automation solutions",
+                "Technology stack optimization",
+                "Digital transformation strategy"
+            ],
+            "icon": "FaRobot"
+        },
+        {
+            "id": "automation",
+            "name": "Automation",
+            "description": "Intelligent workflow automation",
+            "features": [
+                "Workflow automation design",
+                "Integration with existing systems",
+                "Custom automation development",
+                "Training and support"
+            ],
+            "icon": "FaCogs"
+        },
+        {
+            "id": "web-development",
+            "name": "Web Development",
+            "description": "Custom web solutions",
+            "features": [
+                "Website Design & Development",
+                "E-commerce Solutions",
+                "Web Applications",
+                "Maintenance & Support"
+            ],
+            "icon": "FaGlobe"
+        }
+    ],
+    "intakeForms": [
+        {
+            "name": "Personal Umbrella Insurance",
+            "type": "insurance",
+            "url": "Google Form URL"
+        },
+        {
+            "name": "Homeowners Insurance",
+            "type": "insurance",
+            "url": "Google Form URL"
+        },
+        {
+            "name": "Condo Insurance",
+            "type": "insurance",
+            "url": "Google Form URL"
+        },
+        {
+            "name": "Commercial Insurance",
+            "type": "insurance",
+            "url": "Google Form URL"
+        },
+        {
+            "name": "Auto Insurance",
+            "type": "insurance",
+            "url": "Google Form URL"
+        },
+        {
+            "name": "Professional Liability",
+            "type": "insurance",
+            "url": "Google Form URL"
+        },
+        {
+            "name": "General Client Intake",
+            "type": "general",
+            "url": "Google Form URL"
+        }
+    ],
+    "chatbot": {
+        "status": "Implemented with Knowledge Base",
+        "topics": 27,
+        "coverage": [
+            "Greetings",
+            "Hours & Availability",
+            "Services (all 7)",
+            "Insurance (all types)",
+            "Pricing",
+            "Contact Information",
+            "Booking/Appointments",
+            "Quotes/Estimates",
+            "About Company",
+            "Founder Information",
+            "Partners",
+            "Location",
+            "Process",
+            "Reviews",
+            "Experience",
+            "Free Consultation",
+            "Help/Support",
+            "Thank You",
+            "Goodbye"
+        ],
+        "responseTime": "Instant (KB) or <3s (API)",
+        "fallbackSystem": true
+    },
+    "strategicPartners": [
+        {
+            "name": "GIA",
+            "fullName": "Global Insurance Accelerator",
+            "description": "Leading insurance technology and innovation partner"
+        },
+        {
+            "name": "NovaEdge Solutions",
+            "description": "Strategic technology and business solutions partner"
+        }
+    ],
+    "founder": {
+        "name": "Matthew Epstein",
+        "email": "Matthew@MRECAI.com",
+        "phone": "929-919-3574",
+        "experience": "15+ years",
+        "expertise": [
+            "Business Consulting",
+            "Insurance Services",
+            "Technology Implementation",
+            "Strategic Planning"
+        ]
+    },
+    "brandColors": {
+        "primary": "#00A8E8",
+        "navy": "#1E3A5F",
+        "darkGreen": "#2C5F2D",
+        "white": "#FFFFFF",
+        "lightGray": "#F5F5F5"
+    },
+    "typography": {
+        "primaryFont": "Poppins",
+        "secondaryFont": "Inter"
+    },
+    "seo": {
+        "keywords": [
+            "business consulting",
+            "insurance services",
+            "digital marketing",
+            "tax accounting",
+            "AI technology",
+            "business automation",
+            "small business consulting"
+        ],
+        "schemaTypes": [
+            "Organization",
+            "LocalBusiness",
+            "Website",
+            "Service",
+            "Breadcrumb"
+        ]
+    },
+    "apiEndpoints": [
+        {
+            "path": "/api/ai-chat/message",
+            "method": "POST",
+            "purpose": "Send message to AI chatbot"
+        },
+        {
+            "path": "/api/blog/posts",
+            "method": "GET",
+            "purpose": "Get all blog posts"
+        },
+        {
+            "path": "/api/contact",
+            "method": "POST",
+            "purpose": "Submit contact form"
+        },
+        {
+            "path": "/api/newsletter/subscribe",
+            "method": "POST",
+            "purpose": "Subscribe to newsletter"
+        },
+        {
+            "path": "/api/quote",
+            "method": "POST",
+            "purpose": "Submit quote request"
+        },
+        {
+            "path": "/api/reviews/google",
+            "method": "GET",
+            "purpose": "Fetch Google reviews"
+        },
+        {
+            "path": "/api/reviews/yelp",
+            "method": "GET",
+            "purpose": "Fetch Yelp reviews"
+        }
+    ],
+    "conversionPaths": [
+        {
+            "name": "Book Consultation",
+            "steps": [
+                "Visit website",
+                "Click 'Book Now'",
+                "Select time",
+                "Confirm"
+            ],
+            "cta": "Book Free Consultation",
+            "destination": "/book-now"
+        },
+        {
+            "name": "Get Quote",
+            "steps": [
+                "Visit website",
+                "Click 'Get Quote'",
+                "Fill form",
+                "Submit"
+            ],
+            "cta": "Get a Quote",
+            "destination": "/intake-forms"
+        },
+        {
+            "name": "Call Now",
+            "steps": [
+                "Visit website",
+                "Click phone number",
+                "Call"
+            ],
+            "cta": "Call: 929-919-3574",
+            "destination": "tel:929-919-3574"
+        },
+        {
+            "name": "Email Contact",
+            "steps": [
+                "Visit website",
+                "Click email",
+                "Send message"
+            ],
+            "cta": "Email Us",
+            "destination": "mailto:Matthew@MRECAI.com"
+        },
+        {
+            "name": "Chat Support",
+            "steps": [
+                "Visit website",
+                "Open chat widget",
+                "Ask question"
+            ],
+            "cta": "Chat with us",
+            "destination": "AI Chat Widget"
+        }
+    ],
+    "targetAudience": [
+        {
+            "segment": "Individuals & Families",
+            "needs": [
+                "Insurance",
+                "Tax planning",
+                "Financial consulting"
+            ]
+        },
+        {
+            "segment": "Small Businesses",
+            "needs": [
+                "Business consulting",
+                "Commercial insurance",
+                "Tax services",
+                "Marketing"
+            ]
+        },
+        {
+            "segment": "Medium to Large Businesses",
+            "needs": [
+                "Enterprise consulting",
+                "Complex insurance",
+                "AI solutions",
+                "Digital transformation"
+            ]
+        },
+        {
+            "segment": "Startups & Entrepreneurs",
+            "needs": [
+                "Business formation",
+                "Growth strategies",
+                "Technology consulting",
+                "Funding"
+            ]
+        }
+    ],
+    "valuePropositions": [
+        "15+ years of proven experience",
+        "500+ satisfied clients",
+        "98% success rate",
+        "24/7 availability",
+        "Free consultations",
+        "Comprehensive one-stop solutions",
+        "Personalized approach",
+        "Strategic partnerships",
+        "Cutting-edge technology",
+        "Transparent pricing"
+    ],
+    "completionStatus": {
+        "overall": "70%",
+        "frontend": "95%",
+        "backend": "60%",
+        "integrations": "40%",
+        "content": "85%",
+        "testing": "50%"
+    },
+    "pendingTasks": [
+        "Calendly integration",
+        "Full chatbot API connection",
+        "Live reviews integration",
+        "Email marketing platform",
+        "Payment processing",
+        "Client portal"
+    ]
+}
