@@ -3,7 +3,6 @@ import { organizationSchema, breadcrumbSchema } from '../utils/schemas';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaBullseye, FaHandshake, FaLightbulb, FaUsers, FaAward, FaRocket, FaChartLine, FaShieldAlt, FaCog, FaCheckCircle, FaClock, FaGlobe, FaPhone, FaUserTie, FaArrowRight, FaCalendarAlt, FaCalculator } from 'react-icons/fa';
-import { ScrollReveal, AnimatedCard, StaggerList, AnimatedBackground, FloatingElement } from '../components/common';
 
 const About = () => {
   return (
