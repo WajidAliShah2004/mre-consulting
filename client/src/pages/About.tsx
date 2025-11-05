@@ -187,8 +187,8 @@ const About = () => {
                     <FaRocket className="text-5xl mb-4 opacity-80" />
                     <h3 className="text-2xl font-bold mb-4">Driving Your Success</h3>
                     <p className="text-lg leading-relaxed opacity-90">
-                      At MRE Consulting & Insurance, our mission is to empower our clients with innovative solutions 
-                      that drive growth, efficiency, and security. We believe in building lasting partnerships based 
+                      At MRE Consulting & Insurance, our mission is to empower our clients with innovative solutions
+                      that drive growth, efficiency, and security. We believe in building lasting partnerships based
                       on trust, expertise, and measurable results.
                     </p>
                   </div>
@@ -352,8 +352,8 @@ const About = () => {
                 Our <span className="gradient-text">Strategic Partners</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We collaborate with industry-leading partners to provide comprehensive solutions across 
-                all service areas. Our strategic alliances enable us to deliver exceptional value and 
+                We collaborate with industry-leading partners to provide comprehensive solutions across
+                all service areas. Our strategic alliances enable us to deliver exceptional value and
                 expertise to every client.
               </p>
             </motion.div>
