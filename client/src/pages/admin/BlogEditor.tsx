@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { supabase, BlogInsert } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
+import type { BlogInsert } from '../../lib/supabase';
 
 const categories = [
   'Business Tips',
