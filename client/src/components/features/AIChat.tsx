@@ -625,7 +625,7 @@ const AIChat = () => {
 
             {/* Messages Area with Custom Scrollbar */}
             <div 
-              className="message-container flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-50 to-white"
+              className="message-container flex-1 overflow-y-auto p-3 space-y-2.5 bg-gradient-to-b from-gray-50 to-white"
               style={{
                 scrollbarWidth: 'thin',
                 scrollbarColor: '#CBD5E1 #F1F5F9'
@@ -637,20 +637,20 @@ const AIChat = () => {
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.2 }}
-                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} items-end gap-2`}
+                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} items-end gap-1.5`}
                 >
                   {message.sender === 'bot' && (
-                    <div className="w-7 h-7 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-1">
-                      <FaRobot className="text-white text-xs" />
+                    <div className="w-6 h-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
+                      <FaRobot className="text-white text-[10px]" />
                     </div>
                   )}
                   <div
                     className={`max-w-[75%] sm:max-w-[80%] ${message.sender === 'user'
                         ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl rounded-br-md'
                         : 'bg-white text-gray-800 rounded-2xl rounded-bl-md border border-gray-200'
-                      } px-4 py-2.5 shadow-sm`}
+                      } px-3 py-2 shadow-sm`}
                   >
-                    <p className="text-sm leading-relaxed whitespace-pre-line break-words">
+                    <p className="text-xs leading-relaxed whitespace-pre-line break-words">
                       {message.sender === 'bot'
                         ? message.text.split(/(\/.+?)(?=\s|$)/g).map((part, index) => {
                           if (part.match(/^\/[a-z-]+(?:\/[a-z-]+)?$/)) {
@@ -673,7 +673,7 @@ const AIChat = () => {
                         : message.text
                       }
                     </p>
-                    <p className={`text-[10px] mt-1.5 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
+                    <p className={`text-[9px] mt-1 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
                       {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -683,26 +683,26 @@ const AIChat = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex justify-start items-end gap-2"
+                  className="flex justify-start items-end gap-1.5"
                 >
-                  <div className="w-7 h-7 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-1">
-                    <FaRobot className="text-white text-xs" />
+                  <div className="w-6 h-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
+                    <FaRobot className="text-white text-[10px]" />
                   </div>
-                  <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
-                    <div className="flex gap-1.5">
-                      <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-3 py-2 shadow-sm">
+                    <div className="flex gap-1">
+                      <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce"></div>
+                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-1.5 h-1.5 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </motion.div>
               )}
             </div>
 
-            {/* Quick Actions - Compact */}
+            {/* Quick Actions - Ultra Compact */}
             {messages.length === 1 && (
-              <div className="flex-shrink-0 px-4 py-2 bg-gray-50 border-t border-gray-200">
-                <p className="text-[10px] font-semibold text-gray-500 mb-1.5">Quick Actions</p>
+              <div className="flex-shrink-0 px-3 py-1.5 bg-gray-50 border-t border-gray-200">
+                <p className="text-[9px] font-semibold text-gray-500 mb-1">Quick Actions</p>
                 <div className="grid grid-cols-2 gap-1.5">
                   {quickActions.map((action, index) => (
                     <button
@@ -713,7 +713,7 @@ const AIChat = () => {
                         else if (action.action === 'services') window.location.href = '/services';
                         else if (action.action === 'contact') window.location.href = '/contact';
                       }}
-                      className="px-2.5 py-1.5 text-[11px] font-semibold text-indigo-700 bg-indigo-50 rounded-lg hover:bg-indigo-100 active:scale-95 transition-all border border-indigo-200"
+                      className="px-2 py-1 text-[10px] font-semibold text-indigo-700 bg-indigo-50 rounded-lg hover:bg-indigo-100 active:scale-95 transition-all border border-indigo-200"
                     >
                       {action.label}
                     </button>
