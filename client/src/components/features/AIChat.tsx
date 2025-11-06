@@ -648,9 +648,9 @@ const AIChat = () => {
                     className={`inline-block ${message.sender === 'user' ? 'max-w-[75%] sm:max-w-[80%]' : 'max-w-[85%]'} ${message.sender === 'user'
                         ? 'bg-primary-500 text-white rounded-2xl rounded-br-md'
                         : 'bg-white text-gray-800 rounded-2xl rounded-bl-md border border-gray-200'
-                      } px-3 py-2 shadow-sm`}
+                      } px-3 py-1.5 shadow-sm`}
                   >
-                    <p className="text-xs leading-relaxed whitespace-pre-line break-words">
+                    <p className="text-xs leading-snug whitespace-pre-line break-words">
                       {message.sender === 'bot'
                         ? message.text.split(/(\/.+?)(?=\s|$)/g).map((part, index) => {
                           if (part.match(/^\/[a-z-]+(?:\/[a-z-]+)?$/)) {
@@ -673,7 +673,7 @@ const AIChat = () => {
                         : message.text
                       }
                     </p>
-                    <p className={`text-[9px] mt-1 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
+                    <p className={`text-[9px] mt-0.5 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
                       {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -688,7 +688,7 @@ const AIChat = () => {
                   <div className="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
                     <FaRobot className="text-white text-[10px]" />
                   </div>
-                  <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-3 py-2 shadow-sm">
+                  <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-3 py-1.5 shadow-sm">
                     <div className="flex gap-1">
                       <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-bounce"></div>
                       <div className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
