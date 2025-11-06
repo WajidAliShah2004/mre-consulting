@@ -25,7 +25,11 @@ const AIChat = () => {
   ];
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [showNotification, setShowNotification] = useState(true);
+  const [showNotification, setShowNotification] = useState(() => {
+    // Check if user has seen the notification before
+    const hasSeenNotification = localStorage.getItem('chatbot-notification-seen');
+    return !hasSeenNotification; // Show only if not seen before
+  });
   const [hasUnreadMessages, setHasUnreadMessages] = useState(false);
   
   // Conversation history for OpenAI context (last 5 messages)
@@ -72,9 +76,10 @@ const AIChat = () => {
       // Play sound when notification appears
       playNotificationSound();
 
-      // Auto-dismiss after 5 seconds
+      // Auto-dismiss after 5 seconds and mark as seen
       const timer = setTimeout(() => {
         setShowNotification(false);
+        localStorage.setItem('chatbot-notification-seen', 'true');
       }, 5000);
 
       return () => clearTimeout(timer);
@@ -534,7 +539,10 @@ const AIChat = () => {
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
           onClick={() => {
             setIsOpen(!isOpen);
-            setShowNotification(false);
+            if (showNotification) {
+              setShowNotification(false);
+              localStorage.setItem('chatbot-notification-seen', 'true');
+            }
           }}
           className="relative bg-gradient-to-r from-primary-500 to-primary-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center"
           aria-label="Open AI Chat"
@@ -564,7 +572,10 @@ const AIChat = () => {
               className="absolute bottom-20 left-0 sm:bottom-0 sm:left-20 bg-white rounded-lg shadow-2xl p-3 sm:p-4 w-64 sm:w-72 border-2 border-blue-500 transition-all duration-300"
             >
               <button
-                onClick={() => setShowNotification(false)}
+                onClick={() => {
+                  setShowNotification(false);
+                  localStorage.setItem('chatbot-notification-seen', 'true');
+                }}
                 className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 p-1"
                 aria-label="Close notification"
               >
