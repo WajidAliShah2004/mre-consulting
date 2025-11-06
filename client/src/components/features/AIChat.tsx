@@ -558,11 +558,11 @@ const AIChat = () => {
         <AnimatePresence>
           {showNotification && !isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.9 }}
+              initial={{ opacity: 0, x: -10, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -10, scale: 0.9 }}
               transition={{ delay: 1, duration: 0.3, ease: "easeOut" }}
-              className="absolute bottom-20 left-0 sm:bottom-auto sm:top-0 sm:left-20 bg-white rounded-lg shadow-2xl p-3 sm:p-4 w-64 sm:w-72 border-2 border-primary-500 transition-all duration-300"
+              className="absolute bottom-20 left-0 sm:bottom-0 sm:left-20 bg-white rounded-lg shadow-2xl p-3 sm:p-4 w-64 sm:w-72 border-2 border-blue-500 transition-all duration-300"
             >
               <button
                 onClick={() => setShowNotification(false)}
@@ -593,28 +593,44 @@ const AIChat = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-x-4 bottom-20 sm:inset-x-auto sm:bottom-24 sm:left-6 md:left-8 sm:right-auto max-h-[calc(100vh-120px)] sm:max-h-[600px] md:max-h-[650px] z-50 w-auto sm:w-96 md:w-[420px] bg-white rounded-lg shadow-2xl flex flex-col transition-all duration-300"
+            className="fixed bottom-20 left-4 right-4 sm:bottom-24 sm:left-auto sm:right-6 md:right-8 sm:w-96 md:w-[420px] h-[calc(100vh-120px)] sm:h-[500px] md:h-[550px] lg:h-[500px] z-50 bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden transition-all duration-300"
           >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white p-3 sm:p-4 flex-shrink-0">
-              <h3 className="font-semibold flex items-center space-x-2 text-sm sm:text-base">
-                <FaRobot className="text-lg sm:text-xl" />
-                <span>MRECAI AI Assistant</span>
-              </h3>
-              <p className="text-xs text-primary-100 mt-1">We're here to help!</p>
+            {/* Header - Fixed at top with distinct color */}
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-3 sm:p-4 flex-shrink-0 rounded-t-lg shadow-md">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <FaRobot className="text-lg sm:text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-sm sm:text-base">MRECAI AI Assistant</h3>
+                    <p className="text-xs text-primary-100">Online • Ready to help</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-white/80 hover:text-white transition-colors p-1"
+                  aria-label="Close chat"
+                >
+                  <FaTimes className="text-lg" />
+                </button>
+              </div>
             </div>
 
-            {/* Messages */}
-            <div className="message-container flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50 scroll-smooth min-h-0">
+            {/* Messages Container - Scrollable body with distinct background */}
+            <div className="message-container flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50 scroll-smooth">
               {messages.map((message) => (
-                <div
+                <motion.div
                   key={message.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
                   className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
                     className={`max-w-[85%] sm:max-w-[80%] p-2.5 sm:p-3 rounded-lg ${message.sender === 'user'
-                        ? 'bg-primary-500 text-white'
-                        : 'bg-white text-gray-800 shadow'
+                        ? 'bg-primary-500 text-white rounded-br-none shadow-md'
+                        : 'bg-white text-gray-800 shadow-md rounded-bl-none border border-gray-100'
                       }`}
                   >
                     <p className="text-xs sm:text-sm whitespace-pre-line leading-relaxed break-words">
@@ -641,25 +657,32 @@ const AIChat = () => {
                         : message.text
                       }
                     </p>
+                    <p className={`text-[10px] mt-1 ${message.sender === 'user' ? 'text-primary-100' : 'text-gray-400'}`}>
+                      {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
               {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-white p-3 rounded-lg shadow">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-start"
+                >
+                  <div className="bg-white p-3 rounded-lg shadow-md rounded-bl-none border border-gray-100">
                     <div className="flex space-x-2">
                       <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce"></div>
                       <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                       <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
             </div>
 
-            {/* Quick Actions */}
+            {/* Quick Actions - Fixed above input */}
             {messages.length === 1 && (
-              <div className="flex-shrink-0 px-3 sm:px-4 py-2 sm:py-3 bg-white border-t border-gray-100">
+              <div className="flex-shrink-0 px-3 sm:px-4 py-2 sm:py-3 bg-white border-t border-gray-200">
                 <p className="text-xs text-gray-600 mb-2 font-semibold">Quick Actions:</p>
                 <div className="grid grid-cols-2 gap-2">
                   {quickActions.map((action, index) => (
@@ -685,8 +708,8 @@ const AIChat = () => {
               </div>
             )}
 
-            {/* Input */}
-            <div className="flex-shrink-0 p-3 sm:p-4 bg-white border-t border-gray-200">
+            {/* Input Area - Fixed at bottom */}
+            <div className="flex-shrink-0 p-3 sm:p-4 bg-white border-t border-gray-200 rounded-b-lg">
               <div className="flex space-x-2">
                 <input
                   type="text"
