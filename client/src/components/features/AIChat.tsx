@@ -465,10 +465,9 @@ const AIChat = () => {
         });
         
         setIsLoading(false);
-        // Play notification sound for bot response
-        playNotificationSound();
-        // Mark as unread if chat is closed
+        // Play notification sound and mark as unread only if chat is closed
         if (!isOpen) {
+          playNotificationSound();
           setHasUnreadMessages(true);
         }
       }, 500); // Simulate thinking time
@@ -493,10 +492,9 @@ const AIChat = () => {
           return updated.slice(-5); // Limit to last 5 messages
         });
         
-        // Play notification sound for bot response
-        playNotificationSound();
-        // Mark as unread if chat is closed
+        // Play notification sound and mark as unread only if chat is closed
         if (!isOpen) {
+          playNotificationSound();
           setHasUnreadMessages(true);
         }
       } catch (error) {
@@ -515,10 +513,9 @@ const AIChat = () => {
           return updated.slice(-5); // Limit to last 5 messages
         });
         
-        // Play notification sound for bot response
-        playNotificationSound();
-        // Mark as unread if chat is closed
+        // Play notification sound and mark as unread only if chat is closed
         if (!isOpen) {
+          playNotificationSound();
           setHasUnreadMessages(true);
         }
       } finally {
