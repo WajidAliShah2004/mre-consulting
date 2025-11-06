@@ -39,11 +39,19 @@ export const verifyEmailConfig = async (): Promise<boolean> => {
       console.log('⚠️  Email not configured - skipping verification');
       return false;
     }
-    await transporter.verify();
+    
+    // Set a shorter timeout for Railway
+    const verifyPromise = transporter.verify();
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Verification timeout')), 5000)
+    );
+    
+    await Promise.race([verifyPromise, timeoutPromise]);
     console.log('✅ Email service is ready');
     return true;
   } catch (error) {
-    console.error('❌ Email service verification failed:', error);
+    console.warn('⚠️  Email service verification failed (non-critical):', (error as Error).message);
+    console.log('📧 Email sending will be attempted but may fail on Railway');
     return false;
   }
 };
