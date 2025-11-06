@@ -31,6 +31,7 @@ const Footer = () => {
     { name: 'Intake Forms', path: '/intake-forms' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Blog', path: '/blog' },
+    { name: 'Advice & Education', path: '/advice-education' },
     { name: 'Contact', path: '/contact' },
     { name: 'Book Now', path: '/book-now' }
   ];
