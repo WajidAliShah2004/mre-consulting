@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa';
 import { sendChatMessage } from '../../services/api';
 import type { ChatMessage } from '../../types';
 
 const AIChat = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -655,17 +657,16 @@ const AIChat = () => {
                         ? message.text.split(/(\/.+?)(?=\s|$)/g).map((part, index) => {
                           if (part.match(/^\/[a-z-]+(?:\/[a-z-]+)?$/)) {
                             return (
-                              <a
+                              <button
                                 key={index}
-                                href={part}
-                                className="underline font-semibold text-primary-600 hover:text-primary-700 transition-colors"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  window.location.href = part;
+                                onClick={() => {
+                                  navigate(part);
+                                  setIsOpen(false);
                                 }}
+                                className="underline font-semibold text-primary-600 hover:text-primary-700 transition-colors cursor-pointer"
                               >
                                 {part}
-                              </a>
+                              </button>
                             );
                           }
                           return part;
@@ -707,10 +708,11 @@ const AIChat = () => {
                     <button
                       key={index}
                       onClick={() => {
-                        if (action.action === 'quote') window.location.href = '/intake-forms';
-                        else if (action.action === 'book') window.location.href = '/book-now';
-                        else if (action.action === 'services') window.location.href = '/services';
-                        else if (action.action === 'contact') window.location.href = '/contact';
+                        if (action.action === 'quote') navigate('/intake-forms');
+                        else if (action.action === 'book') navigate('/book-now');
+                        else if (action.action === 'services') navigate('/services');
+                        else if (action.action === 'contact') navigate('/contact');
+                        setIsOpen(false);
                       }}
                       className="text-[10px] font-medium text-primary-600 hover:text-primary-700 hover:underline transition-colors"
                     >
