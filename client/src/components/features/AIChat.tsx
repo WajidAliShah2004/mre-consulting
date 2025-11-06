@@ -528,7 +528,7 @@ const AIChat = () => {
   return (
     <>
       {/* Chat Button with Notification Badge */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-50 transition-all duration-300">
+      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8 z-50 transition-all duration-300">
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -562,7 +562,7 @@ const AIChat = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.9 }}
               transition={{ delay: 1, duration: 0.3, ease: "easeOut" }}
-              className="absolute bottom-20 right-0 sm:bottom-auto sm:top-0 sm:right-20 bg-white rounded-lg shadow-2xl p-3 sm:p-4 w-64 sm:w-72 border-2 border-primary-500 transition-all duration-300"
+              className="absolute bottom-20 left-0 sm:bottom-auto sm:top-0 sm:left-20 bg-white rounded-lg shadow-2xl p-3 sm:p-4 w-64 sm:w-72 border-2 border-primary-500 transition-all duration-300"
             >
               <button
                 onClick={() => setShowNotification(false)}
@@ -593,7 +593,7 @@ const AIChat = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-x-4 bottom-20 sm:inset-x-auto sm:bottom-24 sm:right-6 md:right-8 sm:left-auto max-h-[calc(100vh-120px)] sm:max-h-[600px] md:max-h-[650px] z-50 w-auto sm:w-96 md:w-[420px] bg-white rounded-lg shadow-2xl flex flex-col transition-all duration-300"
+            className="fixed inset-x-4 bottom-20 sm:inset-x-auto sm:bottom-24 sm:left-6 md:left-8 sm:right-auto max-h-[calc(100vh-120px)] sm:max-h-[600px] md:max-h-[650px] z-50 w-auto sm:w-96 md:w-[420px] bg-white rounded-lg shadow-2xl flex flex-col transition-all duration-300"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white p-3 sm:p-4 flex-shrink-0">

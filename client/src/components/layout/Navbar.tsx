@@ -75,25 +75,25 @@ const Navbar = () => {
       <div className={`fixed w-full z-50 bg-navy-900 text-white transition-all duration-300 ${
         isScrolled ? 'h-0 opacity-0 overflow-hidden' : 'h-auto opacity-100'
       }`}>
-        <div className="container-custom py-2">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-6">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <div className="flex justify-between items-center text-xs sm:text-sm">
+            <div className="flex items-center space-x-3 sm:space-x-6">
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="flex items-center space-x-2 text-gray-300 hover:text-primary-400 transition-colors"
+                className="flex items-center space-x-1 sm:space-x-2 text-gray-300 hover:text-primary-400 transition-colors"
               >
-                <FaPhone className="text-xs" />
-                <span className="hidden sm:inline">{COMPANY_INFO.phone}</span>
+                <FaPhone className="text-xs flex-shrink-0" />
+                <span>{COMPANY_INFO.phone}</span>
               </a>
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="flex items-center space-x-2 text-gray-300 hover:text-primary-400 transition-colors"
+                className="flex items-center space-x-1 sm:space-x-2 text-gray-300 hover:text-primary-400 transition-colors"
               >
-                <FaEnvelope className="text-xs" />
-                <span className="hidden md:inline">{COMPANY_INFO.email}</span>
+                <FaEnvelope className="text-xs flex-shrink-0" />
+                <span className="hidden sm:inline truncate max-w-[150px] md:max-w-none">{COMPANY_INFO.email}</span>
               </a>
             </div>
-            <div className="text-gray-400 text-xs hidden lg:block">
+            <div className="text-gray-400 text-xs hidden xl:block">
               24/7 Service Support Available
             </div>
           </div>
@@ -108,8 +108,8 @@ const Navbar = () => {
             : 'top-10 py-2'
         }`}
       >
-        <div className="w-full px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 max-w-[1600px] mx-auto">
+        <div className="max-w-[1600px] mx-auto px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8">
+          <div className="flex items-center justify-between gap-1 sm:gap-2 lg:gap-3 xl:gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center group flex-shrink-0">
               <motion.div 
@@ -121,8 +121,8 @@ const Navbar = () => {
                   src={logoImage} 
                   alt="MRE Consulting & Insurance" 
                   className={`transition-all duration-300 ${
-                    isScrolled ? 'h-16 w-auto' : 'h-20 w-auto'
-                  } object-contain`}
+                    isScrolled ? 'h-10 sm:h-12 md:h-14 lg:h-16 w-auto' : 'h-12 sm:h-14 md:h-16 lg:h-20 w-auto'
+                  } object-contain max-w-[100px] sm:max-w-[120px] md:max-w-[150px] lg:max-w-none`}
                   loading="eager"
                   fetchPriority="high"
                 />
@@ -130,15 +130,15 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center justify-center flex-1 mx-4">
-              <div className="flex items-center gap-2">
+            <nav className="hidden lg:flex items-center justify-center flex-1 mx-1 xl:mx-2 2xl:mx-4">
+              <div className="flex items-center gap-0 lg:gap-0.5 xl:gap-1 2xl:gap-2">
               {/* Home Link */}
               <Link
                 to="/"
                 className="relative group"
               >
                 <motion.div
-                  className={`px-5 py-2.5 font-semibold transition-all duration-300 rounded-lg relative ${
+                  className={`px-1.5 lg:px-2 xl:px-3 2xl:px-5 py-2 lg:py-2.5 font-semibold text-xs lg:text-sm xl:text-base transition-all duration-300 rounded-lg relative ${
                     location.pathname === '/'
                       ? 'text-primary-600 bg-primary-50'
                       : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
@@ -166,7 +166,7 @@ const Navbar = () => {
                 onMouseLeave={() => setAboutDropdownOpen(false)}
               >
                 <motion.button
-                  className={`px-5 py-2.5 font-semibold transition-all duration-300 rounded-lg flex items-center gap-1 relative ${
+                  className={`px-1.5 lg:px-2 xl:px-3 2xl:px-5 py-2 lg:py-2.5 font-semibold text-xs lg:text-sm xl:text-base transition-all duration-300 rounded-lg flex items-center gap-0.5 lg:gap-1 relative ${
                     isAboutActive
                       ? 'text-primary-600 bg-primary-50'
                       : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
@@ -224,7 +224,7 @@ const Navbar = () => {
                 onMouseLeave={() => setServicesDropdownOpen(false)}
               >
                 <motion.button
-                  className={`px-5 py-2.5 font-semibold transition-all duration-300 rounded-lg flex items-center gap-1 relative ${
+                  className={`px-1.5 lg:px-2 xl:px-3 2xl:px-5 py-2 lg:py-2.5 font-semibold text-xs lg:text-sm xl:text-base transition-all duration-300 rounded-lg flex items-center gap-0.5 lg:gap-1 relative ${
                     isServicesActive
                       ? 'text-primary-600 bg-primary-50'
                       : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
@@ -283,7 +283,7 @@ const Navbar = () => {
                   className="relative group"
                 >
                   <motion.div
-                    className={`px-5 py-2.5 font-semibold transition-all duration-300 rounded-lg relative whitespace-nowrap ${
+                    className={`px-1.5 lg:px-2 xl:px-3 2xl:px-5 py-2 lg:py-2.5 font-semibold text-xs lg:text-sm xl:text-base transition-all duration-300 rounded-lg relative whitespace-nowrap ${
                       location.pathname === link.path
                         ? 'text-primary-600 bg-primary-50'
                         : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
@@ -311,17 +311,18 @@ const Navbar = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="hidden lg:block"
+              className="hidden lg:block flex-shrink-0"
             >
               <Link 
                 to="/book-now" 
-                className={`px-6 py-2 text-white font-bold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 ${
+                className={`px-2 lg:px-3 xl:px-4 2xl:px-6 py-1.5 lg:py-2 text-white font-bold text-xs lg:text-sm xl:text-base rounded-lg transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-1 xl:gap-2 whitespace-nowrap ${
                   location.pathname === '/book-now'
                     ? 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
                     : 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700'
                 }`}
               >
-                <span>{location.pathname === '/book-now' ? 'You\'re Here!' : 'Book Now'}</span>
+                <span className="hidden 2xl:inline">{location.pathname === '/book-now' ? 'You\'re Here!' : 'Book Now'}</span>
+                <span className="2xl:hidden">Book</span>
                 {location.pathname !== '/book-now' && (
                   <motion.span
                     animate={{ x: [0, 3, 0] }}
@@ -337,7 +338,7 @@ const Navbar = () => {
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               whileTap={{ scale: 0.95 }}
-              className="lg:hidden p-3 rounded-xl transition-all duration-300 text-primary-600 hover:bg-primary-50 bg-white shadow-md border border-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+              className="lg:hidden p-2 sm:p-3 rounded-xl transition-all duration-300 text-primary-600 hover:bg-primary-50 bg-white shadow-md border border-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 flex-shrink-0"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
             >
@@ -345,7 +346,7 @@ const Navbar = () => {
                 animate={{ rotate: isOpen ? 90 : 0 }}
                 transition={{ duration: 0.3 }}
               >
-                {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+                {isOpen ? <FaTimes className="text-xl sm:text-2xl" /> : <FaBars className="text-xl sm:text-2xl" />}
               </motion.div>
             </motion.button>
           </div>
@@ -358,9 +359,9 @@ const Navbar = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="lg:hidden mt-6 bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100"
+                className="lg:hidden mt-4 sm:mt-6 bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100"
               >
-                <div className="flex flex-col p-6 space-y-2">
+                <div className="flex flex-col p-4 sm:p-6 space-y-2 max-h-[calc(100vh-120px)] overflow-y-auto">
                   {/* Home Link */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
