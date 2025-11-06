@@ -593,7 +593,7 @@ const AIChat = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:w-[380px] md:w-[400px] max-h-[85vh] sm:max-h-[600px] z-50 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
+            className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:w-[380px] md:w-[400px] max-h-[75vh] sm:max-h-[480px] z-50 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
           >
             {/* Modern Header with Gradient */}
             <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-4 py-3 flex-shrink-0">
@@ -699,11 +699,11 @@ const AIChat = () => {
               )}
             </div>
 
-            {/* Quick Actions */}
+            {/* Quick Actions - Compact */}
             {messages.length === 1 && (
-              <div className="flex-shrink-0 px-4 py-3 bg-gray-50 border-t border-gray-200">
-                <p className="text-xs font-semibold text-gray-600 mb-2">Quick Actions</p>
-                <div className="grid grid-cols-2 gap-2">
+              <div className="flex-shrink-0 px-4 py-2 bg-gray-50 border-t border-gray-200">
+                <p className="text-[10px] font-semibold text-gray-500 mb-1.5">Quick Actions</p>
+                <div className="grid grid-cols-2 gap-1.5">
                   {quickActions.map((action, index) => (
                     <button
                       key={index}
@@ -713,7 +713,7 @@ const AIChat = () => {
                         else if (action.action === 'services') window.location.href = '/services';
                         else if (action.action === 'contact') window.location.href = '/contact';
                       }}
-                      className="px-3 py-2.5 text-xs font-semibold text-indigo-700 bg-indigo-50 rounded-xl hover:bg-indigo-100 active:scale-95 transition-all border border-indigo-200"
+                      className="px-2.5 py-1.5 text-[11px] font-semibold text-indigo-700 bg-indigo-50 rounded-lg hover:bg-indigo-100 active:scale-95 transition-all border border-indigo-200"
                     >
                       {action.label}
                     </button>
