@@ -5,6 +5,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { testConnection } from './config/supabase';
+import { verifyEmailConfig } from './services/emailService';
 import { errorHandler } from './middleware/errorHandler';
 import { notFound } from './middleware/notFound';
 
@@ -16,6 +17,9 @@ const app: Application = express();
 
 // Test Supabase connection
 testConnection();
+
+// Verify email configuration
+verifyEmailConfig();
 
 // Middleware
 app.use(helmet());

@@ -126,8 +126,27 @@ const Contact = () => {
         }
       }
 
-      // TODO: Implement actual contact form submission to backend
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call
+      // Submit contact form to backend
+      const contactResponse = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message
+        }),
+      });
+
+      const contactData = await contactResponse.json();
+
+      if (!contactResponse.ok) {
+        throw new Error(contactData.message || 'Failed to send message');
+      }
+
       setSubmitStatus('success');
       setFormData({
         name: '',
