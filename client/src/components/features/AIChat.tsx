@@ -585,31 +585,37 @@ const AIChat = () => {
         </AnimatePresence>
       </div>
 
-      {/* Chat Window */}
+      {/* Chat Window - Redesigned Modern Layout */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed bottom-20 left-4 right-4 sm:bottom-24 sm:left-auto sm:right-6 md:right-8 sm:w-96 md:w-[420px] h-[calc(100vh-120px)] sm:h-[500px] md:h-[550px] lg:h-[500px] z-50 bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden transition-all duration-300"
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:w-[380px] md:w-[400px] max-h-[85vh] sm:max-h-[600px] z-50 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
           >
-            {/* Header - Fixed at top with distinct color */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-3 sm:p-4 flex-shrink-0 rounded-t-lg shadow-md">
+            {/* Modern Header with Gradient */}
+            <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-4 py-3 flex-shrink-0">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center">
-                    <FaRobot className="text-lg sm:text-xl" />
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center ring-2 ring-white/30">
+                      <FaRobot className="text-xl" />
+                    </div>
+                    <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-sm sm:text-base">MRECAI AI Assistant</h3>
-                    <p className="text-xs text-primary-100">Online • Ready to help</p>
+                    <h3 className="font-bold text-base">AI Assistant</h3>
+                    <p className="text-xs text-white/90 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                      Online now
+                    </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-white/80 hover:text-white transition-colors p-1"
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors"
                   aria-label="Close chat"
                 >
                   <FaTimes className="text-lg" />
@@ -617,32 +623,42 @@ const AIChat = () => {
               </div>
             </div>
 
-            {/* Messages Container - Scrollable body with distinct background */}
-            <div className="message-container flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50 scroll-smooth">
+            {/* Messages Area with Custom Scrollbar */}
+            <div 
+              className="message-container flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-50 to-white"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: '#CBD5E1 #F1F5F9'
+              }}
+            >
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} items-end gap-2`}
                 >
+                  {message.sender === 'bot' && (
+                    <div className="w-7 h-7 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-1">
+                      <FaRobot className="text-white text-xs" />
+                    </div>
+                  )}
                   <div
-                    className={`max-w-[85%] sm:max-w-[80%] p-2.5 sm:p-3 rounded-lg ${message.sender === 'user'
-                        ? 'bg-primary-500 text-white rounded-br-none shadow-md'
-                        : 'bg-white text-gray-800 shadow-md rounded-bl-none border border-gray-100'
-                      }`}
+                    className={`max-w-[75%] sm:max-w-[80%] ${message.sender === 'user'
+                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl rounded-br-md'
+                        : 'bg-white text-gray-800 rounded-2xl rounded-bl-md border border-gray-200'
+                      } px-4 py-2.5 shadow-sm`}
                   >
-                    <p className="text-xs sm:text-sm whitespace-pre-line leading-relaxed break-words">
+                    <p className="text-sm leading-relaxed whitespace-pre-line break-words">
                       {message.sender === 'bot'
                         ? message.text.split(/(\/.+?)(?=\s|$)/g).map((part, index) => {
-                          // Check if part is a route path
                           if (part.match(/^\/[a-z-]+(?:\/[a-z-]+)?$/)) {
                             return (
                               <a
                                 key={index}
                                 href={part}
-                                className="underline font-semibold hover:text-primary-600 transition-colors"
+                                className="underline font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   window.location.href = part;
@@ -657,7 +673,7 @@ const AIChat = () => {
                         : message.text
                       }
                     </p>
-                    <p className={`text-[10px] mt-1 ${message.sender === 'user' ? 'text-primary-100' : 'text-gray-400'}`}>
+                    <p className={`text-[10px] mt-1.5 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
                       {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -667,39 +683,37 @@ const AIChat = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex justify-start"
+                  className="flex justify-start items-end gap-2"
                 >
-                  <div className="bg-white p-3 rounded-lg shadow-md rounded-bl-none border border-gray-100">
-                    <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-7 h-7 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-1">
+                    <FaRobot className="text-white text-xs" />
+                  </div>
+                  <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
+                    <div className="flex gap-1.5">
+                      <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </motion.div>
               )}
             </div>
 
-            {/* Quick Actions - Fixed above input */}
+            {/* Quick Actions */}
             {messages.length === 1 && (
-              <div className="flex-shrink-0 px-3 sm:px-4 py-2 sm:py-3 bg-white border-t border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Quick Actions:</p>
+              <div className="flex-shrink-0 px-4 py-3 bg-gray-50 border-t border-gray-200">
+                <p className="text-xs font-semibold text-gray-600 mb-2">Quick Actions</p>
                 <div className="grid grid-cols-2 gap-2">
                   {quickActions.map((action, index) => (
                     <button
                       key={index}
                       onClick={() => {
-                        if (action.action === 'quote') {
-                          window.location.href = '/intake-forms';
-                        } else if (action.action === 'book') {
-                          window.location.href = '/book-now';
-                        } else if (action.action === 'services') {
-                          window.location.href = '/services';
-                        } else if (action.action === 'contact') {
-                          window.location.href = '/contact';
-                        }
+                        if (action.action === 'quote') window.location.href = '/intake-forms';
+                        else if (action.action === 'book') window.location.href = '/book-now';
+                        else if (action.action === 'services') window.location.href = '/services';
+                        else if (action.action === 'contact') window.location.href = '/contact';
                       }}
-                      className="px-2 sm:px-3 py-2.5 sm:py-3 min-h-[44px] text-xs sm:text-sm font-semibold text-primary-600 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors active:scale-95"
+                      className="px-3 py-2.5 text-xs font-semibold text-indigo-700 bg-indigo-50 rounded-xl hover:bg-indigo-100 active:scale-95 transition-all border border-indigo-200"
                     >
                       {action.label}
                     </button>
@@ -708,29 +722,29 @@ const AIChat = () => {
               </div>
             )}
 
-            {/* Input Area - Fixed at bottom */}
-            <div className="flex-shrink-0 p-3 sm:p-4 bg-white border-t border-gray-200 rounded-b-lg">
-              <div className="flex space-x-2">
+            {/* Modern Input Area */}
+            <div className="flex-shrink-0 p-4 bg-white border-t border-gray-200">
+              <div className="flex gap-2">
                 <input
                   type="text"
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && handleSendMessage()}
-                  placeholder="Type your message..."
-                  className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base min-h-[44px] sm:min-h-[48px] border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  placeholder="Type a message..."
+                  className="flex-1 px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-gray-50 hover:bg-white transition-colors"
                   disabled={isLoading}
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={isLoading || !inputMessage.trim()}
-                  className="bg-primary-500 text-white p-3 sm:p-3.5 min-w-[44px] min-h-[44px] sm:min-w-[48px] sm:min-h-[48px] rounded-lg hover:bg-primary-600 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center flex-shrink-0"
+                  className="w-11 h-11 flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                   aria-label="Send message"
                 >
-                  <FaPaperPlane className="text-sm sm:text-base" />
+                  <FaPaperPlane className="text-sm" />
                 </button>
               </div>
-              <p className="text-xs text-gray-500 mt-2 text-center leading-relaxed">
-                Powered by AI • Available 24/7
+              <p className="text-[10px] text-gray-400 text-center mt-2">
+                Powered by AI • Always here to help
               </p>
             </div>
           </motion.div>
