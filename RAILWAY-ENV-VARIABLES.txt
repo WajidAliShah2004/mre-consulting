@@ -22,11 +22,11 @@ EMAIL_HOST=smtp.gmail.com
 
 EMAIL_PORT=587
 
-EMAIL_USER=your_email@gmail.com
+EMAIL_USER=ai@mrecai.com
 
-EMAIL_PASS=your_gmail_app_password
+EMAIL_PASS=Mrecai1234$
 
-EMAIL_FROM=noreply@mrecai.com
+EMAIL_FROM=ai@mrecai.com
 
 OPENAI_API_KEY=your_openai_api_key_here
 
