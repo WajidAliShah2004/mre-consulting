@@ -595,8 +595,8 @@ const AIChat = () => {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:w-[380px] md:w-[400px] max-h-[75vh] sm:max-h-[480px] z-50 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
           >
-            {/* Compact Header */}
-            <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-3 py-2 flex-shrink-0">
+            {/* Compact Header - Website Colors */}
+            <div className="bg-gradient-to-r from-navy-500 to-primary-600 text-white px-3 py-2 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="relative">
@@ -640,13 +640,13 @@ const AIChat = () => {
                   className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} items-end gap-1.5`}
                 >
                   {message.sender === 'bot' && (
-                    <div className="w-6 h-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
+                    <div className="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
                       <FaRobot className="text-white text-[10px]" />
                     </div>
                   )}
                   <div
-                    className={`max-w-[75%] sm:max-w-[80%] ${message.sender === 'user'
-                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl rounded-br-md'
+                    className={`inline-block ${message.sender === 'user' ? 'max-w-[75%] sm:max-w-[80%]' : 'max-w-[85%]'} ${message.sender === 'user'
+                        ? 'bg-primary-500 text-white rounded-2xl rounded-br-md'
                         : 'bg-white text-gray-800 rounded-2xl rounded-bl-md border border-gray-200'
                       } px-3 py-2 shadow-sm`}
                   >
@@ -658,7 +658,7 @@ const AIChat = () => {
                               <a
                                 key={index}
                                 href={part}
-                                className="underline font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
+                                className="underline font-semibold text-primary-600 hover:text-primary-700 transition-colors"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   window.location.href = part;
@@ -685,14 +685,14 @@ const AIChat = () => {
                   animate={{ opacity: 1 }}
                   className="flex justify-start items-end gap-1.5"
                 >
-                  <div className="w-6 h-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
+                  <div className="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
                     <FaRobot className="text-white text-[10px]" />
                   </div>
                   <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-3 py-2 shadow-sm">
                     <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce"></div>
-                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-1.5 h-1.5 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-bounce"></div>
+                      <div className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-1.5 h-1.5 bg-navy-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </motion.div>
@@ -712,7 +712,7 @@ const AIChat = () => {
                         else if (action.action === 'services') window.location.href = '/services';
                         else if (action.action === 'contact') window.location.href = '/contact';
                       }}
-                      className="text-[10px] font-medium text-indigo-600 hover:text-indigo-800 hover:underline transition-colors"
+                      className="text-[10px] font-medium text-primary-600 hover:text-primary-700 hover:underline transition-colors"
                     >
                       {action.label}
                     </button>
@@ -730,13 +730,13 @@ const AIChat = () => {
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && handleSendMessage()}
                   placeholder="Type a message..."
-                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-gray-50 hover:bg-white transition-colors"
+                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-gray-50 hover:bg-white transition-colors"
                   disabled={isLoading}
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={isLoading || !inputMessage.trim()}
-                  className="w-9 h-9 flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                  className="w-9 h-9 flex items-center justify-center bg-primary-500 hover:bg-primary-600 text-white rounded-xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                   aria-label="Send message"
                 >
                   <FaPaperPlane className="text-xs" />
