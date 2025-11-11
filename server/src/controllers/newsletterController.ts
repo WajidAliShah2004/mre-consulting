@@ -10,7 +10,11 @@ export const subscribe = async (req: Request, res: Response): Promise<void> => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       console.log('❌ Newsletter validation failed:', errors.array());
-      res.status(400).json({ errors: errors.array() });
+      res.status(400).json({ 
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array() 
+      });
       return;
     }
 
