@@ -64,6 +64,9 @@ export const sendEmail = async (options: EmailOptions): Promise<void> => {
       return;
     }
 
+    console.log(`📧 Attempting to send email to: ${options.to}`);
+    console.log(`📧 SMTP Config: ${process.env.SMTP2GO_HOST}:${process.env.SMTP2GO_PORT}`);
+
     const mailOptions = {
       from: process.env.SMTP2GO_FROM || `MRE Consulting <${process.env.SMTP2GO_USER}>`,
       to: options.to,
@@ -73,9 +76,15 @@ export const sendEmail = async (options: EmailOptions): Promise<void> => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ Email sent via SMTP2GO to ${options.to} - Message ID: ${info.messageId}`);
+    console.log(`✅ Email sent successfully via SMTP2GO to ${options.to}`);
+    console.log(`✅ Message ID: ${info.messageId}`);
   } catch (error) {
-    console.error('❌ SMTP2GO email sending failed:', error);
+    console.error(`❌ SMTP2GO email sending failed to ${options.to}:`, error);
+    console.error(`❌ Error details:`, {
+      code: (error as any).code,
+      command: (error as any).command,
+      message: (error as Error).message
+    });
     // Don't throw error to prevent contact form submission from failing
     // Just log it and continue
   }
