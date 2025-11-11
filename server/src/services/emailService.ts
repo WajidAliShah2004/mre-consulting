@@ -121,7 +121,7 @@ const sendEmailViaSMTP = async (options: EmailOptions): Promise<void> => {
       text: options.text || options.html.replace(/<[^>]*>/g, '')
     };
 
-    const info = await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
     console.log(`✅ Email sent via SMTP to ${options.to}`);
   } catch (error) {
     console.error(`❌ SMTP fallback failed:`, (error as Error).message);
