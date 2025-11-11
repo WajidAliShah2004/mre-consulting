@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
+import axios from 'axios';
 
 interface EmailOptions {
   to: string;
@@ -56,37 +57,74 @@ export const verifyEmailConfig = async (): Promise<boolean> => {
   }
 };
 
+// Send email using SMTP2GO API (more reliable than SMTP on Railway)
 export const sendEmail = async (options: EmailOptions): Promise<void> => {
   try {
-    // Check if SMTP2GO is configured
+    // Check if SMTP2GO API key is configured
+    const apiKey = process.env.SMTP2GO_API_KEY;
+    
+    if (!apiKey) {
+      console.warn('⚠️  SMTP2GO API key not configured. Trying SMTP fallback...');
+      return sendEmailViaSMTP(options);
+    }
+
+    console.log(`📧 Attempting to send email via SMTP2GO API to: ${options.to}`);
+
+    const response = await axios.post(
+      'https://api.smtp2go.com/v3/email/send',
+      {
+        api_key: apiKey,
+        to: [options.to],
+        sender: process.env.SMTP2GO_FROM || 'MRE Consulting <ai@mrecai.com>',
+        subject: options.subject,
+        html_body: options.html,
+        text_body: options.text || options.html.replace(/<[^>]*>/g, '')
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        timeout: 10000
+      }
+    );
+
+    if (response.data.data.succeeded > 0) {
+      console.log(`✅ Email sent successfully via SMTP2GO API to ${options.to}`);
+      console.log(`✅ Response:`, response.data.data);
+    } else {
+      console.error(`❌ SMTP2GO API failed:`, response.data.data);
+    }
+  } catch (error) {
+    console.error(`❌ SMTP2GO API email sending failed to ${options.to}:`, error);
+    if (axios.isAxiosError(error)) {
+      console.error(`❌ API Error:`, error.response?.data);
+    }
+    // Don't throw error to prevent contact form submission from failing
+  }
+};
+
+// Fallback SMTP method (will timeout on Railway but kept for local dev)
+const sendEmailViaSMTP = async (options: EmailOptions): Promise<void> => {
+  try {
     if (!process.env.SMTP2GO_USER || !process.env.SMTP2GO_PASS) {
-      console.warn('⚠️  SMTP2GO not configured. Skipping email send.');
+      console.warn('⚠️  SMTP2GO credentials not configured. Skipping email send.');
       return;
     }
 
-    console.log(`📧 Attempting to send email to: ${options.to}`);
-    console.log(`📧 SMTP Config: ${process.env.SMTP2GO_HOST}:${process.env.SMTP2GO_PORT}`);
+    console.log(`📧 Attempting SMTP fallback to: ${options.to}`);
 
     const mailOptions = {
       from: process.env.SMTP2GO_FROM || `MRE Consulting <${process.env.SMTP2GO_USER}>`,
       to: options.to,
       subject: options.subject,
       html: options.html,
-      text: options.text || options.html.replace(/<[^>]*>/g, '') // Strip HTML for text version
+      text: options.text || options.html.replace(/<[^>]*>/g, '')
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ Email sent successfully via SMTP2GO to ${options.to}`);
-    console.log(`✅ Message ID: ${info.messageId}`);
+    console.log(`✅ Email sent via SMTP to ${options.to}`);
   } catch (error) {
-    console.error(`❌ SMTP2GO email sending failed to ${options.to}:`, error);
-    console.error(`❌ Error details:`, {
-      code: (error as any).code,
-      command: (error as any).command,
-      message: (error as Error).message
-    });
-    // Don't throw error to prevent contact form submission from failing
-    // Just log it and continue
+    console.error(`❌ SMTP fallback failed:`, (error as Error).message);
   }
 };
 
