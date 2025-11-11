@@ -15,6 +15,9 @@ dotenv.config();
 // Initialize express app
 const app: Application = express();
 
+// Trust proxy - Required for Railway/Heroku/etc behind reverse proxy
+app.set('trust proxy', 1);
+
 // Test Supabase connection
 testConnection();
 

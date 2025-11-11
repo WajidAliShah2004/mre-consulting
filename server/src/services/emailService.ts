@@ -40,10 +40,10 @@ export const verifyEmailConfig = async (): Promise<boolean> => {
       return false;
     }
     
-    // Set a timeout for verification
+    // Set a timeout for verification (15 seconds for SMTP2GO)
     const verifyPromise = transporter.verify();
     const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Verification timeout')), 10000)
+      setTimeout(() => reject(new Error('Verification timeout')), 15000)
     );
     
     await Promise.race([verifyPromise, timeoutPromise]);

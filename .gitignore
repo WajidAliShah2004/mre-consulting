@@ -43,3 +43,8 @@ Thumbs.db
 # Misc
 .cache
 .temp
+
+# Sensitive files - DO NOT COMMIT
+RAILWAY-SMTP2GO-ENV.txt
+*-CREDENTIALS.txt
+*-ENV.txt
