@@ -69,6 +69,10 @@ export const sendEmail = async (options: EmailOptions): Promise<void> => {
     }
 
     console.log(`📧 Attempting to send email via SMTP2GO API to: ${options.to}`);
+    console.log(`📧 Email subject: ${options.subject}`);
+    console.log(`📧 Email from: ${process.env.SMTP2GO_FROM || 'MRE Consulting <ai@mrecai.com>'}`);
+    console.log(`📧 Email HTML content:\n${options.html}`);
+    console.log(`📧 ==================== END EMAIL CONTENT ====================`);
 
     const response = await axios.post(
       'https://api.smtp2go.com/v3/email/send',
