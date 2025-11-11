@@ -1,0 +1,16 @@
+# Add these to Railway Environment Variables
+# Go to: Railway Project → Variables Tab → Add Variables
+
+SMTP2GO_HOST=mail.smtp2go.com
+SMTP2GO_PORT=2525
+SMTP2GO_USER=your-smtp-username
+SMTP2GO_PASS=your-smtp-password
+SMTP2GO_FROM=MRE Consulting <ai@mrecai.com>
+ADMIN_EMAIL=matthew@mrecai.com
+
+# Email Flow:
+# - Contact form submissions will be sent FROM: ai@mrecai.com
+# - Admin notifications will be sent TO: matthew@mrecai.com
+# - Customer confirmations will be sent FROM: ai@mrecai.com TO: customer's email
+
+# IMPORTANT: After adding these variables to Railway, redeploy your backend service!

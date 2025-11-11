@@ -46,7 +46,7 @@ export const createContact = async (req: Request, res: Response): Promise<void> 
     });
 
     sendEmail({
-      to: process.env.EMAIL_USER || 'Matthew@MRECAI.com',
+      to: process.env.ADMIN_EMAIL || 'matthew@mrecai.com',
       subject: notificationEmail.subject,
       html: notificationEmail.html
     }).catch(err => console.error('Admin notification email failed:', err));

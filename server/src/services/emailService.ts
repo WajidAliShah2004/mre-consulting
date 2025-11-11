@@ -8,23 +8,23 @@ interface EmailOptions {
   text?: string;
 }
 
-// Create transporter with error handling
+// Create transporter with SMTP2GO configuration
 const createTransporter = (): Transporter => {
   const config = {
-    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.EMAIL_PORT || '587'),
-    secure: false, // true for 465, false for other ports
+    host: process.env.SMTP2GO_HOST || 'mail.smtp2go.com',
+    port: parseInt(process.env.SMTP2GO_PORT || '2525'), // SMTP2GO uses port 2525, 587, or 8025
+    secure: false, // Use STARTTLS
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
+      user: process.env.SMTP2GO_USER,
+      pass: process.env.SMTP2GO_PASS
     },
     tls: {
-      rejectUnauthorized: false // For development
+      rejectUnauthorized: true // SMTP2GO has valid certificates
     }
   };
 
   if (!config.auth.user || !config.auth.pass) {
-    console.warn('⚠️  Email credentials not configured. Emails will not be sent.');
+    console.warn('⚠️  SMTP2GO credentials not configured. Emails will not be sent.');
   }
 
   return nodemailer.createTransport(config);
@@ -35,37 +35,37 @@ const transporter = createTransporter();
 // Verify transporter configuration
 export const verifyEmailConfig = async (): Promise<boolean> => {
   try {
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.log('⚠️  Email not configured - skipping verification');
+    if (!process.env.SMTP2GO_USER || !process.env.SMTP2GO_PASS) {
+      console.log('⚠️  SMTP2GO not configured - skipping verification');
       return false;
     }
     
-    // Set a shorter timeout for Railway
+    // Set a timeout for verification
     const verifyPromise = transporter.verify();
     const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Verification timeout')), 5000)
+      setTimeout(() => reject(new Error('Verification timeout')), 10000)
     );
     
     await Promise.race([verifyPromise, timeoutPromise]);
-    console.log('✅ Email service is ready');
+    console.log('✅ SMTP2GO email service is ready');
     return true;
   } catch (error) {
-    console.warn('⚠️  Email service verification failed (non-critical):', (error as Error).message);
-    console.log('📧 Email sending will be attempted but may fail on Railway');
+    console.warn('⚠️  SMTP2GO verification failed (non-critical):', (error as Error).message);
+    console.log('📧 Email sending will be attempted but may fail');
     return false;
   }
 };
 
 export const sendEmail = async (options: EmailOptions): Promise<void> => {
   try {
-    // Check if email is configured
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.warn('⚠️  Email not configured. Skipping email send.');
+    // Check if SMTP2GO is configured
+    if (!process.env.SMTP2GO_USER || !process.env.SMTP2GO_PASS) {
+      console.warn('⚠️  SMTP2GO not configured. Skipping email send.');
       return;
     }
 
     const mailOptions = {
-      from: `MRE Consulting <${process.env.EMAIL_FROM || process.env.EMAIL_USER}>`,
+      from: process.env.SMTP2GO_FROM || `MRE Consulting <${process.env.SMTP2GO_USER}>`,
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -73,9 +73,9 @@ export const sendEmail = async (options: EmailOptions): Promise<void> => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ Email sent to ${options.to} - Message ID: ${info.messageId}`);
+    console.log(`✅ Email sent via SMTP2GO to ${options.to} - Message ID: ${info.messageId}`);
   } catch (error) {
-    console.error('❌ Email sending failed:', error);
+    console.error('❌ SMTP2GO email sending failed:', error);
     // Don't throw error to prevent contact form submission from failing
     // Just log it and continue
   }
