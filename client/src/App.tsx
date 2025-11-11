@@ -37,6 +37,7 @@ import TermsOfService from './pages/TermsOfService';
 // Resources & Tools
 import Resources from './pages/Resources';
 import ROICalculator from './pages/tools/ROICalculator';
+import ReadinessAssessment from './pages/tools/ReadinessAssessment';
 import AdviceEducation from './pages/AdviceEducation';
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
         <Route path="terms-of-service" element={<TermsOfService />} />
         <Route path="resources" element={<Resources />} />
         <Route path="tools/roi-calculator" element={<ROICalculator />} />
+        <Route path="tools/readiness-assessment" element={<ReadinessAssessment />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       
